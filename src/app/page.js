@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 export default function LandingPage() {
   return (
@@ -8,14 +7,7 @@ export default function LandingPage() {
       <nav style={styles.navbar}>
         <div style={styles.navLogo}>PiSlideControl</div>
         <div style={styles.socialIcons}>
-          <a
-            href="https://github.com/valeedimilson/piSlideControl"
-            target="_blank"
-            rel="noreferrer"
-            style={styles.socialIcon}
-          >
-            GitHub
-          </a>
+          
         </div>
       </nav>
 
@@ -46,12 +38,19 @@ export default function LandingPage() {
           </div>
         </div>
 
+        {/* NOVA ÁREA DE IMAGENS (PRINTS) */}
         <div style={styles.imageContainer}>
-          {/* Usa a mesma imagem do patinho que já está na pasta public/ */}
           <img
-            src="/logo.svg"
-            alt="PiSlideControl Logo"
-            style={styles.heroImage}
+            src="/server-print.png"
+            alt="Print do Servidor Windows"
+            style={styles.serverMockup}
+            title="Servidor Desktop"
+          />
+          <img
+            src="/mobile-print.png"
+            alt="Print do Controle no Celular"
+            style={styles.mobileMockup}
+            title="Controle Web Mobile"
           />
         </div>
       </main>
@@ -90,20 +89,16 @@ export default function LandingPage() {
       {/* Rodapé */}
       <footer style={styles.footer}>
         <p>
-          Desenvolvido com 💙 por{" "}
-          <a
-            href="https://github.com/valeedimilson"
-            style={{ color: "#2196f3", textDecoration: "none" }}
-          >
-            Edimilsson (dimi)
-          </a>
+          Desenvolvido por{" "}
+          
+            Edimilson (dyme)
         </p>
       </footer>
     </div>
   );
 }
 
-// Estilos embutidos para manter a compatibilidade e a identidade visual
+// Estilos
 const styles = {
   body: {
     fontFamily: "Arial, sans-serif",
@@ -113,6 +108,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     margin: 0,
+    padding:0,
   },
   navbar: {
     display: "flex",
@@ -187,15 +183,32 @@ const styles = {
     border: "2px solid #2196f3",
     transition: "background-color 0.3s",
   },
+  // --- NOVOS ESTILOS PARA OS PRINTS ---
   imageContainer: {
     display: "flex",
     justifyContent: "center",
+    alignItems: "center",
+    gap: "20px", // Espaço entre os dois prints
+    flexWrap: "wrap",
   },
-  heroImage: {
+  serverMockup: {
     width: "100%",
-    maxWidth: "400px",
-    dropShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    maxWidth: "280px", // Tamanho um pouco maior para o PC
+    borderRadius: "12px", // Borda suave de janela do Windows
+    boxShadow: "0 15px 35px rgba(0,0,0,0.2)", // Sombra flutuante
+    border: "1px solid rgba(0,0,0,0.1)",
+    backgroundColor: "white",
   },
+  mobileMockup: {
+    width: "100%",
+    maxWidth: "180px", // Mais estreito, formato de celular
+    borderRadius: "24px", // Borda bem redonda imitando um smartphone
+    boxShadow: "0 15px 35px rgba(0,0,0,0.3)", // Sombra um pouco mais forte
+    border: "6px solid #333", // Simula a carcaça de um celular preto
+    backgroundColor: "white",
+    marginTop: "40px", // Desce o celular um pouquinho para dar um efeito de "cascata" bem moderno
+  },
+  // ------------------------------------
   featuresSection: {
     padding: "60px 50px",
     backgroundColor: "white",
