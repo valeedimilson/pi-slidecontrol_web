@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function Home() {
+// 1. Renomeamos a sua função principal de Home para ControlApp
+function ControlApp() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("sessionId");
 
@@ -12,7 +13,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  // Função para buscar a URL atualizada do banco de dados
   const fetchTunnelUrl = useCallback(async () => {
     if (!sessionId) {
       setError("ID de sessão ausente na URL.");
@@ -36,40 +36,36 @@ export default function Home() {
     }
   }, [sessionId]);
 
-  // Busca a URL pela primeira vez e configura o "cronômetro" de 10 segundos
   useEffect(() => {
     fetchTunnelUrl();
 
-    // Cria um intervalo para consultar a API da Vercel a cada 10 segundos
     const interval = setInterval(() => {
       fetchTunnelUrl();
-    }, 10000); // 10.000 ms = 10 segundos
+    }, 10000);
 
-    return () => clearInterval(interval); // Limpa o intervalo ao fechar a página
+    return () => clearInterval(interval);
   }, [fetchTunnelUrl]);
 
-  // Função para enviar os comandos de tecla via Proxy do Next.js
   const sendCommand = async (action) => {
     if (!pinggyUrl) {
       alert("Aguarde a conexão com o servidor ser estabelecida.");
       return;
     }
 
-    // Verifica se o navegador suporta a API de vibração e vibra por 40 milissegundos
+    // Feedback tátil (Vibração)
     if (typeof window !== "undefined" && navigator.vibrate) {
       navigator.vibrate(40);
     }
 
     try {
-      // Faz a requisição para a nossa PRÓPRIA API (mesmo domínio = zero CORS)
       const response = await fetch("/api/command", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          pinggyUrl: pinggyUrl, // Manda a URL base do Pinggy
-          action: action, // 'next' ou 'previous'
+          pinggyUrl: pinggyUrl,
+          action: action,
         }),
       });
 
@@ -78,7 +74,7 @@ export default function Home() {
     } catch (err) {
       alert(`Falha ao enviar comando: ${err.message}`);
     }
-  };;
+  };
 
   if (loading) {
     return (
@@ -126,7 +122,6 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            {/* LinkedIn SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -143,7 +138,6 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            {/* GitHub SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -159,7 +153,6 @@ export default function Home() {
 
       <div style={styles.controls}>
         <div style={styles.logo}>
-          {/* Como o logo agora está na Vercel, coloque a imagem logo.svg na pasta public/ do Next.js */}
           <img src="/logo.svg" width="250px" alt="Logo Patinho" />
         </div>
         <div style={styles.buttons}>
@@ -187,7 +180,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Aviso de renovação sutil */}
         <div
           style={{
             marginTop: "40px",
@@ -218,7 +210,31 @@ export default function Home() {
   );
 }
 
-// Transformei o seu CSS bruto em objetos JavaScript para o Next.js
+// 2. Criamos o componente padrão exportado que "embrulha" o ControlApp com o Suspense
+export default function ControlPage() {
+  return (
+    // O fallback é o que aparece na tela por 1 segundo enquanto a URL é lida
+    <Suspense
+      fallback={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            backgroundColor: "#ffecce",
+          }}
+        >
+          <h2>Carregando...</h2>
+        </div>
+      }
+    >
+      <ControlApp />
+    </Suspense>
+  );
+}
+
+// Estilos continuam iguais
 const styles = {
   body: {
     fontFamily: "Arial, sans-serif",
