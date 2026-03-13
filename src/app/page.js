@@ -6,9 +6,7 @@ export default function LandingPage() {
       {/* Barra de Navegação */}
       <nav style={styles.navbar}>
         <div style={styles.navLogo}>PiSlideControl</div>
-        <div style={styles.socialIcons}>
-          
-        </div>
+        <div style={styles.socialIcons}></div>
       </nav>
 
       {/* Seção Principal (Hero) */}
@@ -24,7 +22,7 @@ export default function LandingPage() {
           <div style={styles.actionButtons}>
             {/* O link de download deve apontar para o .exe hospedado no seu GitHub Releases ou Google Drive */}
             <a
-              href="https://github.com/valeedimilson/piSlideControl/releases/latest"
+              href="https://www.mediafire.com/file/vqik77hr9f79mg6/piSlideControl.exe/file"
               target="_blank"
               rel="noreferrer"
               style={styles.downloadBtn}
@@ -88,11 +86,7 @@ export default function LandingPage() {
 
       {/* Rodapé */}
       <footer style={styles.footer}>
-        <p>
-          Desenvolvido por{" "}
-          
-            Edimilson (dyme)
-        </p>
+        <p>Desenvolvido por Edimilson (dyme)</p>
       </footer>
     </div>
   );
