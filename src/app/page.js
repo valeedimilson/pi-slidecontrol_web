@@ -8,8 +8,6 @@ export default function LandingPage() {
       <nav style={styles.navbar}>
         <div style={styles.navLogo}>PiSlideControl</div>
         <div style={styles.socialIcons}>
-          
-
           <a
             href="https://www.linkedin.com/in/valeedimilson"
             style={styles.socialIcon}
@@ -58,7 +56,7 @@ export default function LandingPage() {
           <div style={styles.actionButtons}>
             {/* O link de download deve apontar para o .exe hospedado no seu GitHub Releases ou Google Drive */}
             <a
-              href="https://www.mediafire.com/file/1qctpw1agv0hfns/piSlideControl_v2.0.exe/file"
+              href="https://www.mediafire.com/file/ndo9rejlqrg10bi/piSlideControl_v2.0.exe/file"
               target="_blank"
               rel="noreferrer"
               style={styles.downloadBtn}
