@@ -1,12 +1,48 @@
 import React from "react";
 
+
 export default function LandingPage() {
   return (
     <div style={styles.body}>
       {/* Barra de Navegação */}
       <nav style={styles.navbar}>
         <div style={styles.navLogo}>PiSlideControl</div>
-        <div style={styles.socialIcons}></div>
+        <div style={styles.socialIcons}>
+          
+
+          <a
+            href="https://www.linkedin.com/in/valeedimilson"
+            style={styles.socialIcon}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              width="24"
+              height="24"
+            >
+              <path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM7.12 20H3.56V9h3.56v11zM5.34 7.43c-1.14 0-2.07-.94-2.07-2.09s.93-2.09 2.07-2.09 2.07.94 2.07 2.09-.93 2.09-2.07 2.09zM20.44 20h-3.56v-5.41c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V20H9.44V9h3.42v1.5h.05c.48-.9 1.66-1.84 3.42-1.84 3.66 0 4.34 2.41 4.34 5.54V20z" />
+            </svg>
+          </a>
+          <a
+            href="https://github.com/valeedimilson/piSlideControl"
+            style={styles.socialIcon}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              width="24"
+              height="24"
+            >
+              <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.113.793-.258.793-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.933 0-1.31.468-2.38 1.235-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.51 11.51 0 0 1 3.003-.403c1.02.005 2.047.137 3.003.403 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.63-5.48 5.922.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .32.192.694.8.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </div>
       </nav>
 
       {/* Seção Principal (Hero) */}
