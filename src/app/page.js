@@ -22,7 +22,7 @@ export default function LandingPage() {
           <div style={styles.actionButtons}>
             {/* O link de download deve apontar para o .exe hospedado no seu GitHub Releases ou Google Drive */}
             <a
-              href="https://www.mediafire.com/file/vqik77hr9f79mg6/piSlideControl.exe/file"
+              href="https://www.mediafire.com/file/1qctpw1agv0hfns/piSlideControl_v2.0.exe/file"
               target="_blank"
               rel="noreferrer"
               style={styles.downloadBtn}
