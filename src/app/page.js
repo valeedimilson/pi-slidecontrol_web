@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -13,6 +13,7 @@ export default function LandingPage() {
             style={styles.socialIcon}
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn de Edimilson"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,6 +30,7 @@ export default function LandingPage() {
             style={styles.socialIcon}
             target="_blank"
             rel="noreferrer"
+            aria-label="GitHub do projeto"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,11 +52,10 @@ export default function LandingPage() {
           <p style={styles.description}>
             O PiSlideControl transforma o seu celular em um passador de slides
             profissional. Sem cabos, sem complicações de rede local e com
-            alcance global.
+            alcance global seguro.
           </p>
 
           <div style={styles.actionButtons}>
-            {/* O link de download deve apontar para o .exe hospedado no seu GitHub Releases ou Google Drive */}
             <a
               href="https://www.mediafire.com/file/ndo9rejlqrg10bi/piSlideControl_v2.0.exe/file"
               target="_blank"
@@ -70,17 +71,22 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* NOVA ÁREA DE IMAGENS (PRINTS) */}
+        {/* ÁREA DE IMAGENS (PRINTS) */}
         <div style={styles.imageContainer}>
-          <img
+          <Image
             src="/server-print.png"
             alt="Print do Servidor Windows"
+            width={280}
+            height={380}
             style={styles.serverMockup}
             title="Servidor Desktop"
+            priority
           />
-          <img
+          <Image
             src="/mobile-print.png"
             alt="Print do Controle no Celular"
+            width={180}
+            height={360}
             style={styles.mobileMockup}
             title="Controle Web Mobile"
           />
@@ -95,7 +101,7 @@ export default function LandingPage() {
             <div style={styles.stepNumber}>1</div>
             <h3>Baixe o Servidor</h3>
             <p>
-              Faça o download do executável e rode no computador onde a
+              Faça o download do executável e execute no computador onde a
               apresentação vai acontecer.
             </p>
           </div>
@@ -111,8 +117,8 @@ export default function LandingPage() {
             <div style={styles.stepNumber}>3</div>
             <h3>Apresente!</h3>
             <p>
-              Seu celular abrirá automaticamente o controle remoto. É só tocar
-              nos botões e brilhar!
+              Seu celular abrirá automaticamente o controle remoto com botões de
+              avanço, retorno e modo tela cheia.
             </p>
           </div>
         </div>
@@ -136,7 +142,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     margin: 0,
-    padding:0,
+    padding: 0,
   },
   navbar: {
     display: "flex",
@@ -159,6 +165,8 @@ const styles = {
     color: "white",
     textDecoration: "none",
     fontWeight: "bold",
+    display: "flex",
+    alignItems: "center",
   },
   main: {
     display: "flex",
@@ -211,32 +219,32 @@ const styles = {
     border: "2px solid #2196f3",
     transition: "background-color 0.3s",
   },
-  // --- NOVOS ESTILOS PARA OS PRINTS ---
   imageContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: "20px", // Espaço entre os dois prints
+    gap: "20px",
     flexWrap: "wrap",
   },
   serverMockup: {
     width: "100%",
-    maxWidth: "280px", // Tamanho um pouco maior para o PC
-    borderRadius: "12px", // Borda suave de janela do Windows
-    boxShadow: "0 15px 35px rgba(0,0,0,0.2)", // Sombra flutuante
+    maxWidth: "280px",
+    height: "auto",
+    borderRadius: "12px",
+    boxShadow: "0 15px 35px rgba(0,0,0,0.2)",
     border: "1px solid rgba(0,0,0,0.1)",
     backgroundColor: "white",
   },
   mobileMockup: {
     width: "100%",
-    maxWidth: "180px", // Mais estreito, formato de celular
-    borderRadius: "24px", // Borda bem redonda imitando um smartphone
-    boxShadow: "0 15px 35px rgba(0,0,0,0.3)", // Sombra um pouco mais forte
-    border: "6px solid #333", // Simula a carcaça de um celular preto
+    maxWidth: "180px",
+    height: "auto",
+    borderRadius: "24px",
+    boxShadow: "0 15px 35px rgba(0,0,0,0.3)",
+    border: "6px solid #333",
     backgroundColor: "white",
-    marginTop: "40px", // Desce o celular um pouquinho para dar um efeito de "cascata" bem moderno
+    marginTop: "40px",
   },
-  // ------------------------------------
   featuresSection: {
     padding: "60px 50px",
     backgroundColor: "white",

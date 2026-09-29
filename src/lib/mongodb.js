@@ -1,26 +1,44 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
 const options = {};
 
 let client;
 let clientPromise;
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Adicione a MONGODB_URI no arquivo .env.local");
-}
-
-if (process.env.NODE_ENV === "development") {
-  // Em desenvolvimento, usa uma variável global para manter a conexão entre hot-reloads
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
+export function getMongoClientPromise() {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error(
+      "MONGODB_URI não foi configurada nas variáveis de ambiente (.env.local)."
+    );
   }
-  clientPromise = global._mongoClientPromise;
-} else {
-  // Em produção, cria uma nova conexão
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+
+  if (process.env.NODE_ENV === "development") {
+    if (!global._mongoClientPromise) {
+      client = new MongoClient(uri, options);
+      global._mongoClientPromise = client.connect();
+    }
+    return global._mongoClientPromise;
+  } else {
+    if (!clientPromise) {
+      client = new MongoClient(uri, options);
+      clientPromise = client.connect();
+    }
+    return clientPromise;
+  }
 }
 
-export default clientPromise;
+// Thenable para manter total compatibilidade com `await clientPromise` sem estourar no build
+const clientPromiseProxy = {
+  then(onFulfilled, onRejected) {
+    return getMongoClientPromise().then(onFulfilled, onRejected);
+  },
+  catch(onRejected) {
+    return getMongoClientPromise().catch(onRejected);
+  },
+  finally(onFinally) {
+    return getMongoClientPromise().finally(onFinally);
+  },
+};
+
+export default clientPromiseProxy;
