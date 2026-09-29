@@ -50,9 +50,9 @@ export function isValidPinggyUrl(urlStr) {
       return false;
     }
 
-    // Validação estrita de domínio oficial do Pinggy (*.pinggy.link ou *.pinggy.io)
-    // Exemplos reais do Pinggy: rnwbq-187-19-14-12.a.pinggy.link ou xxxx.pinggy.io
-    const isPinggyHost = /^[a-zA-Z0-9-.]+\.pinggy\.(link|io|net)$/i.test(
+    // Validação estrita de domínio oficial do Pinggy (*.pinggy.link, *.pinggy.io, *.pinggy.net, *.pinggy-free.link)
+    // Exemplos reais do Pinggy: rnwbq-187-19-14-12.a.pinggy.link, xxx.free.pinggy.net ou xxx.run.pinggy-free.link
+    const isPinggyHost = /^[a-zA-Z0-9-.]+\.pinggy(-free)?\.(link|io|net)$/i.test(
       parsed.hostname
     );
     if (!isPinggyHost) {

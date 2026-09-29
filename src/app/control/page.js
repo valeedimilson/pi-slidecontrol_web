@@ -221,10 +221,7 @@ function ControlApp() {
       <header className="title-bar">
         <div className="title-group">
           <span className="title-text">PiSlideControl</span>
-          <span className="badge-status">
-            <span className="dot-pulse"></span>
-            Online
-          </span>
+          
         </div>
 
         <div className="social-links">
