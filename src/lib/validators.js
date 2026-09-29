@@ -52,7 +52,7 @@ export function isValidPinggyUrl(urlStr) {
 
     // Validação estrita de domínio oficial do Pinggy (*.pinggy.link ou *.pinggy.io)
     // Exemplos reais do Pinggy: rnwbq-187-19-14-12.a.pinggy.link ou xxxx.pinggy.io
-    const isPinggyHost = /^[a-zA-Z0-9-.]+\.pinggy\.(link|io)$/i.test(
+    const isPinggyHost = /^[a-zA-Z0-9-.]+\.pinggy\.(link|io|net)$/i.test(
       parsed.hostname
     );
     if (!isPinggyHost) {
