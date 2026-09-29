@@ -220,8 +220,8 @@ function ControlApp() {
       {/* Header */}
       <header className="title-bar">
         <div className="title-group">
+          <img src="logo.svg" alt="Logo" width="50" height="20" />
           <span className="title-text">PiSlideControl</span>
-          
         </div>
 
         <div className="social-links">
