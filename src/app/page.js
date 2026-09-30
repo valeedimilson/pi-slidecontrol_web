@@ -57,7 +57,7 @@ export default function LandingPage() {
 
           <div style={styles.actionButtons}>
             <a
-              href="https://www.mediafire.com/file/ndo9rejlqrg10bi/piSlideControl_v2.0.exe/file"
+              href="https://github.com/valeedimilson/piSlideControl/releases/download/v2.1/piSlideControl2.1.exe"
               target="_blank"
               rel="noreferrer"
               style={styles.downloadBtn}
